@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="container">
+      <div class="head-div"><h1 class="heading">Knowledge Hub</h1></div>
+      <button id="btn">Add Book</button>
+      <!-- <button id="showbtn">show dialog</button> -->
+
+      <div class="dialog-overlay">
+        <div class="form-box" id="dialog">
+          <form method="" id="form">
+            <input
+              type="text"
+              name="tittle"
+              placeholder="Book"
+              id="tittle"
+              required
+            />
+            <input type="text" name="author" placeholder="Author" id="author" />
+            <input
+              type="text"
+              name="price"
+              placeholder="Price"
+              id="price"
+              required
+            />
+            <textarea
+              name="description"
+              placeholder="Description"
+              id="description"
+            ></textarea>
+
+            <button type="submit">Submit</button>
+            <button type="button" id="closebtn">Close</button>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <script src="test.js"></script>
+  </body>
+</html>
