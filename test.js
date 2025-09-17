@@ -70,7 +70,7 @@ const openDialog = () => {
   document.body.style.overflow = "hidden";
 };
 const dialogOverlay = document.querySelector(".dialog-overlay");
-dialogOverlay.addEventListener("click",()=>closeDialog());
+dialogOverlay.addEventListener("click", () => closeDialog());
 
 const closeDialog = () => {
   const dialog = document.getElementById("dialog");
@@ -83,10 +83,10 @@ const closeDialog = () => {
   document.body.style.overflow = "auto";
 };
 
-const dialog=document.getElementById('dialog')
-dialog.addEventListener('click',(e)=>{
-e.stopPropagation()
-})
+const dialog = document.getElementById("dialog");
+dialog.addEventListener("click", (e) => {
+  e.stopPropagation();
+});
 addBookBtn.addEventListener("click", (e) => {
   e.preventDefault();
   openDialog();
@@ -99,10 +99,10 @@ closeBtn.addEventListener("click", () => {
 const addBookForm = document.getElementById("form");
 addBookForm.addEventListener("submit", (e) => {
   e.preventDefault();
-  const tittle = document.getElementById("tittle").value.trim();
-  const author = document.getElementById("author").value.trim();
-  const price = document.getElementById("price").value.trim();
-  const description = document.getElementById("description").value.trim();
+  const tittle = document.getElementById("tittle").value;
+  const author = document.getElementById("author").value;
+  const price = document.getElementById("price").value;
+  const description = document.getElementById("description").value;
 
   const formData = {
     id: Date.now(),
@@ -115,4 +115,8 @@ addBookForm.addEventListener("submit", (e) => {
   books.push(formData);
   closeDialog();
   renderData();
+  document.getElementById("tittle").value = "";
+  document.getElementById("author").value = "";
+  document.getElementById("price").value = "";
+  document.getElementById("description").value = "";
 });
