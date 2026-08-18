@@ -2,6 +2,19 @@
 const STORAGE_KEY = "knowledgeHubBooks";
 const DEFAULT_IMAGE = "book-1.jpg";
 
+const DUMMY_IMAGES = [
+  "https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?w=600&auto=format&fit=crop&q=80",
+  "hasil.jpg",
+  "https://images.unsplash.com/photo-1512820790803-83ca734da794?w=600&auto=format&fit=crop&q=80",
+  "https://images.unsplash.com/photo-1592496431122-2349e0fbc666?w=600&auto=format&fit=crop&q=80",
+  "https://images.unsplash.com/photo-1532012197267-da84d127e765?w=600&auto=format&fit=crop&q=80",
+  "book-1.jpg",
+];
+
+function getRandomDummyImage() {
+  return DUMMY_IMAGES[Math.floor(Math.random() * DUMMY_IMAGES.length)];
+}
+
 const SAMPLE_BOOKS = [
   {
     id: "sample-1",
@@ -10,7 +23,7 @@ const SAMPLE_BOOKS = [
     price: 3200,
     image: "https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?w=600&auto=format&fit=crop&q=80",
     description: "An Easy & Proven Way to Build Good Habits & Break Bad Ones.",
-    createdAt: Date.now() - 3000,
+    createdAt: Date.now() - 5000,
   },
   {
     id: "sample-2",
@@ -19,7 +32,7 @@ const SAMPLE_BOOKS = [
     price: 1800,
     image: "hasil.jpg",
     description: "A famous novel exploring human struggles, faith, and spiritual discovery.",
-    createdAt: Date.now() - 2000,
+    createdAt: Date.now() - 4000,
   },
   {
     id: "sample-3",
@@ -28,7 +41,34 @@ const SAMPLE_BOOKS = [
     price: 2500,
     image: "https://images.unsplash.com/photo-1512820790803-83ca734da794?w=600&auto=format&fit=crop&q=80",
     description: "Rules for Focused Success in a Distracted World.",
+    createdAt: Date.now() - 3000,
+  },
+  {
+    id: "sample-4",
+    title: "The Psychology of Money",
+    author: "Morgan Housel",
+    price: 2900,
+    image: "https://images.unsplash.com/photo-1592496431122-2349e0fbc666?w=600&auto=format&fit=crop&q=80",
+    description: "Timeless lessons on wealth, greed, and happiness.",
+    createdAt: Date.now() - 2000,
+  },
+  {
+    id: "sample-5",
+    title: "Clean Code",
+    author: "Robert C. Martin",
+    price: 4200,
+    image: "https://images.unsplash.com/photo-1532012197267-da84d127e765?w=600&auto=format&fit=crop&q=80",
+    description: "A Handbook of Agile Software Craftsmanship.",
     createdAt: Date.now() - 1000,
+  },
+  {
+    id: "sample-6",
+    title: "The Alchemist",
+    author: "Paulo Coelho",
+    price: 2100,
+    image: "book-1.jpg",
+    description: "A magical story about following your dreams.",
+    createdAt: Date.now(),
   },
 ];
 
@@ -240,7 +280,7 @@ form.addEventListener("submit", (e) => {
   e.preventDefault();
 
   const rawImage = form.image.value.trim();
-  const normalizedImage = normalizeImageUrl(rawImage);
+  const normalizedImage = rawImage ? normalizeImageUrl(rawImage) : getRandomDummyImage();
 
   const data = {
     title: form.title.value.trim(),
