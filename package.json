@@ -1,0 +1,10 @@
+{
+  "name": "knowledge-hub",
+  "version": "1.0.0",
+  "description": "A simple library app with CRUD, search and filtering — vanilla HTML/CSS/JS.",
+  "private": true,
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js"
+  }
+}

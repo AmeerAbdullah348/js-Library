@@ -4,42 +4,82 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="style.css" />
-    <title>Document</title>
+    <title>Knowledge Hub — Library</title>
   </head>
   <body>
-    <div id="container">
-      <div class="head-div"><h1 class="heading">Knowledge Hub</h1></div>
-      <button id="btn">Add Book</button>
-      <!-- <button id="showbtn">show dialog</button> -->
+    <header class="app-header">
+      <div class="header-inner">
+        <h1 class="heading">Knowledge Hub</h1>
+        <button id="addBookBtn" class="btn btn-primary">+ Add Book</button>
+      </div>
+    </header>
 
-      <div class="dialog-overlay">
-        <div class="form-box" id="dialog">
-          <form method="" id="form">
-            <input
-              type="text"
-              name="tittle"
-              placeholder="Book"
-              id="tittle"
-              required
-            />
-            <input type="text" name="author" placeholder="Author" id="author" />
-            <input
-              type="text"
-              name="price"
-              placeholder="Price"
-              id="price"
-              required
-            />
-            <textarea
-              name="description"
-              placeholder="Description"
-              id="description"
-            ></textarea>
-
-            <button type="submit">Submit</button>
-            <button type="button" id="closebtn">Close</button>
-          </form>
+    <main class="container">
+      <section class="toolbar">
+        <div class="search-wrap">
+          <input
+            type="search"
+            id="searchInput"
+            class="search-input"
+            placeholder="Search by title or author…"
+            autocomplete="off"
+          />
         </div>
+        <select id="sortSelect" class="sort-select" aria-label="Sort books">
+          <option value="newest">Newest first</option>
+          <option value="title-asc">Title (A–Z)</option>
+          <option value="title-desc">Title (Z–A)</option>
+          <option value="price-asc">Price (low → high)</option>
+          <option value="price-desc">Price (high → low)</option>
+        </select>
+        <span id="bookCount" class="book-count"></span>
+      </section>
+
+      <section id="grid" class="grid" aria-live="polite"></section>
+
+      <div id="emptyState" class="empty-state" hidden>
+        <p class="empty-title">No books yet</p>
+        <p class="empty-sub">Click “Add Book” to build your library.</p>
+      </div>
+    </main>
+
+    <!-- Add / Edit modal -->
+    <div class="dialog-overlay" id="dialogOverlay" hidden>
+      <div class="form-box" id="dialog" role="dialog" aria-modal="true" aria-labelledby="dialogTitle">
+        <h2 id="dialogTitle" class="dialog-title">Add Book</h2>
+        <form id="form" novalidate>
+          <label class="field">
+            <span class="field-label">Title *</span>
+            <input type="text" name="title" id="title" placeholder="e.g. Atomic Habits" required />
+          </label>
+
+          <label class="field">
+            <span class="field-label">Author</span>
+            <input type="text" name="author" id="author" placeholder="e.g. James Clear" />
+          </label>
+
+          <div class="field-row">
+            <label class="field">
+              <span class="field-label">Price (PKR) *</span>
+              <input type="number" name="price" id="price" placeholder="e.g. 3000" min="0" step="1" required />
+            </label>
+
+            <label class="field">
+              <span class="field-label">Image URL</span>
+              <input type="text" name="image" id="image" placeholder="https://… or image name" />
+            </label>
+          </div>
+
+          <label class="field">
+            <span class="field-label">Description</span>
+            <textarea name="description" id="description" placeholder="Short description…" rows="2"></textarea>
+          </label>
+
+          <div class="form-actions">
+            <button type="button" id="closeBtn" class="btn btn-ghost">Cancel</button>
+            <button type="submit" class="btn btn-primary">Save</button>
+          </div>
+        </form>
       </div>
     </div>
 
