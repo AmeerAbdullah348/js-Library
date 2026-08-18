@@ -4,6 +4,7 @@
   "description": "A simple library app with CRUD, search and filtering — vanilla HTML/CSS/JS.",
   "private": true,
   "scripts": {
+    "build": "echo 'Static Site'",
     "start": "node server.js",
     "dev": "node server.js"
   }

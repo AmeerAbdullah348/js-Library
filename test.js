@@ -87,7 +87,7 @@ function loadBooks() {
     const raw = localStorage.getItem(STORAGE_KEY);
     if (!raw) return SAMPLE_BOOKS;
     const parsed = JSON.parse(raw);
-    return Array.isArray(parsed) ? parsed : SAMPLE_BOOKS;
+    return Array.isArray(parsed) && parsed.length > 0 ? parsed : SAMPLE_BOOKS;
   } catch {
     return SAMPLE_BOOKS;
   }
